@@ -1,0 +1,54 @@
+import tensorflow as tf
+with tf.name_scope("MyAssissement2"):
+    with tf.name_scope("A"):
+        a = 6
+        x=tf.pow(a, 2, name="Square_of_a")
+
+    with tf.name_scope("B"):
+        b =4
+        y=tf.pow(b, 2, name="Square_of_b")
+        
+    with tf.name_scope("C"):
+        c =2
+        z=tf.pow(c, 2, name="Square_of_c")
+   
+    with tf.name_scope("D"):
+        d = tf.multiply(2, a, name="2a")
+
+    with tf.name_scope("Scope_E"):
+        e = tf.multiply(d, b, name="2ab")
+        
+    with tf.name_scope("F"):
+        f = tf.multiply(2, b, name="2b")
+
+    with tf.name_scope("Scope_G"):
+        g = tf.multiply(f, c, name="2bc")
+        
+    with tf.name_scope("H"):
+        i = tf.multiply(2, c, name="2c")
+
+    with tf.name_scope("Scope_I"):
+        j = tf.multiply(i, a, name="2ca")
+        
+    
+    with tf.name_scope("Scope_J"):
+        k = tf.add(x, y)
+
+        
+    with tf.name_scope("Scope_K"):
+        l = tf.add(k, z)
+
+    with tf.name_scope("Scope_L"):
+        m = tf.subtract(l, e,)
+        
+    with tf.name_scope("Scope_M"):
+        n = tf.subtract(m, g,)
+        
+    with tf.name_scope("Scope_N"):
+        o = tf.subtract(n, j,)
+        
+with tf.Session() as sess:
+        writer = tf.summary.FileWriter("/tmp/tboard/output3", sess.graph)
+        print(sess.run(o))
+        writer.close()
+   
